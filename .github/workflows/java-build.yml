@@ -3,6 +3,9 @@ name: Java Build and Test
 on:
   push:
     branches: [ main, develop ]
+    paths:
+      # include files or exclude using !
+      - "java-app/*"
   pull_request:
     branches: [ main ]
   workflow_dispatch:
