@@ -10,7 +10,7 @@ jobs:
       foo: ${{ steps.my-step.outputs.foo }}
       bar: ${{ steps.second-step.outputs.bar }}
     steps:
-      - name: Generate and export foo
+      - name: Generate and export
         id: my-step
         run: |
           foo=bar
@@ -26,7 +26,8 @@ jobs:
         run: |
           echo "FOO (set via GITHUB_ENV):   $FOO"
           echo "foo (step output):          ${{ steps.my-step.outputs.foo }}"
-          bar=foo\
+          echo "bar=foo" >> "$GITHUB_OUTPUT"
+          
           
 
   job2:
