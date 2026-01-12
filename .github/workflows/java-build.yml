@@ -16,6 +16,15 @@ jobs:
     name: Build and Test
     
     steps:
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+              
       - name: Checkout code
         uses: actions/checkout@v4
       
