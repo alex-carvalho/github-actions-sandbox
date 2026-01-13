@@ -1,0 +1,30 @@
+name: 'Setup Node.js and Build'
+description: 'Composite action to setup Node.js and build the application'
+
+inputs:
+  node-version:
+    description: 'Node.js version to setup'
+    required: false
+    default: '18'
+  working-directory:
+    description: 'Working directory for the build'
+    required: false
+    default: './node-app'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Install dependencies
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: npm install
+
+    - name: Build application
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: npm test

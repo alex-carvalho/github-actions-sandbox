@@ -1,0 +1,24 @@
+name: Build Node.js App
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - "node-app/*"
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js and Build
+        uses: ./.github/actions/setup-and-build
+        with:
+          node-version: '24'
+          working-directory: './node-app'
