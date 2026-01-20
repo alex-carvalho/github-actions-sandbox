@@ -1,0 +1,13 @@
+name: Node.js Build Using Reusable Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-reusable-workflow:
+    uses: ./.github/workflows/base-reuseable-node-woflow.yml
+    with:
+      node-version: '24'
+      working-directory: './node-app'
+
+    # can call github workflow using user/repo/.github/workflows/workflow-file.yml@ref
