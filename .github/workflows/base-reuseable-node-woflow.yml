@@ -17,6 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Print inputs
+        run: |
+          echo "Node Version: ${{ inputs.node-version }}"
+          echo "Working Directory: ${{ inputs.working-directory }}"
+      
       - name: Checkout code
         uses: actions/checkout@v4
       
