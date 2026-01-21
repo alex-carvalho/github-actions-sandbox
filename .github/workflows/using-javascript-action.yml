@@ -16,5 +16,5 @@ jobs:
         with:
           name: 'GitHub'
       
-      - name: Display Greeting
-        run: "echo \"The action said: ${{ steps.hello.outputs.greeting }}\""
+      - name: Display Output
+        run: "echo \"The action run at: ${{ steps.hello.outputs.time }}\""
