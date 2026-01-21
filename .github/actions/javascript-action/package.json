@@ -1,0 +1,10 @@
+{
+  "name": "hello-world-action",
+  "version": "1.0.0",
+  "description": "A simple Hello World GitHub Action",
+  "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^7.0.0"
+  }
+}
