@@ -1,0 +1,17 @@
+name: Hello (Python)
+description: Greet someone and expose a greeting output
+inputs:
+  name:
+    description: Name to greet
+    required: true
+outputs:
+  greeting:
+    description: The greeting that was printed
+runs:
+  using: docker
+  # Option A – let GitHub build from Dockerfile each run
+  # Option B – use a pre-built image to avoid rebuilds: image: docker://ghcr.io/your-org/hello-python-action:v1
+  image: Dockerfile
+  
+  args:
+    - ${{ inputs.name }}

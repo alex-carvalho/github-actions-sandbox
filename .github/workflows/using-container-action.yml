@@ -1,0 +1,20 @@
+name: Container Actions
+on:
+  workflow_dispatch:
+
+jobs:
+  python-dockerfile:
+    runs-on: ubuntu-latest
+    name: Python Container Action (dynamic Dockerfile build)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493 # v5.0.0
+      
+      - name: Run container action
+        uses: ./github/actions/python-container
+        id: hello
+        with:
+          name: "Alex"
+      
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
