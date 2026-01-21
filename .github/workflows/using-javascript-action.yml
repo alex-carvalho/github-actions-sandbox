@@ -1,4 +1,4 @@
-name: Example GitHub Action Workflow using javascript code
+name: Using javascript code on action
 
 on:
   workflow_dispatch:
