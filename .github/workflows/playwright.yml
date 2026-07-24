@@ -4,6 +4,16 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: 'Choose the environment to run Playwright tests against'
+        required: true
+        options:
+          - dev
+          - uat
+        default: dev
 jobs:
   test:
     timeout-minutes: 60
@@ -39,6 +49,8 @@ jobs:
       working-directory: playwright-demo
     - name: Run Playwright tests
       run: npx playwright test
+      env:
+        TEST_ENV: ${{ inputs.environment || 'dev' }}
       working-directory: playwright-demo
     - uses: actions/upload-artifact@v6
       if: ${{ !cancelled() }}
